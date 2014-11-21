@@ -1,0 +1,34 @@
+{
+  "name": "GoProControllerUI",
+  "version": "0.2.4",
+  "description": "A responsive web interface for the GoProController API.",
+  "scripts": {
+    "preinstall": "rm -rf node_modules bower_components",
+    "postinstall": "node_modules/bower/bin/bower install --config.interactive=false",
+    "start": "node_modules/brunch/bin/brunch watch --server --port 9000",
+    "build": "rm -rf _public; node_modules/brunch/bin/brunch build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshvillbrandt/GoProControllerUI.git"
+  },
+  "author": "Josh Villbrandt",
+  "license": "Apache v2",
+  "bugs": {
+    "url": "https://github.com/joshvillbrandt/GoProControllerUI/issues"
+  },
+  "homepage": "https://github.com/joshvillbrandt/GoProControllerUI",
+  "dependencies": {
+    "aang-template-brunch": "~1.7.6",
+    "after-brunch": "0.0.4",
+    "auto-reload-brunch": ">= 1.0 < 1.8",
+    "bower": "^1.3.5",
+    "brunch": "~1.7",
+    "clean-css-brunch": ">= 1.0 < 1.8",
+    "css-brunch": ">= 1.0 < 1.8",
+    "javascript-brunch": ">= 1.0 < 1.8",
+    "less-brunch": ">= 1.0 < 1.8",
+    "uglify-js-brunch": ">= 1.0 < 1.8"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,32 @@
+{
+  "name": "GoProControllerUI",
+  "version": "0.1.0",
+  "main": [],
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "angular": "1.2.12",
+    "angular-animate": "1.2.12",
+    "angular-sanitize": "1.2.12",
+    "angular-resource": "1.2.12",
+    "angular-route": "1.2.12",
+    "angular-cookies": "1.2.12",
+    "angular-mocks": "1.2.12",
+    "angular-bootstrap": "~0.11.0",
+    "bootstrap": "~3.2.0",
+    "lodash": "~2.4.1",
+    "moment": "~2.7.0",
+    "angular-moment": "~0.8.0"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "./dist/fonts/glyphicons-halflings-regular.eot",
+        "./dist/fonts/glyphicons-halflings-regular.svg",
+        "./dist/fonts/glyphicons-halflings-regular.ttf",
+        "./dist/fonts/glyphicons-halflings-regular.woff"
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# Filesystem stuff
+**/.DS_Store
+nbproject
+manifest.mf
+build.xml
+
+# Node stuff
+_public
+node_modules
+node_modules/*
+npm-debug.log
+
+# Karma stuff
+test/test-results.xml
+
+# Bower stuff
+bower_components/
