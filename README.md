@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-The UI should now be available at [http://localhost:9000/](http://localhost:4444/).
+The UI should now be available at [http://localhost:9000/](http://localhost:9000/).
 
 You can also build the app and push it to a static content host with:
 

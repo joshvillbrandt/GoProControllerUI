@@ -1,0 +1,37 @@
+
+@import "/bower_components/bootstrap/less/bootstrap.less";
+
+/* Layout
+-------------------------------------------------- */
+
+@footer-height: @navbar-height;
+@body-content-padding: 40px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: @navbar-height + @body-content-padding;
+  margin-bottom: @footer-height + 20px;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: @footer-height;
+  padding: 15px 0;
+}
+
+#footer .glyphicon-cog {
+  top: 3px;
+}
+
+/* Shared snippits
+-------------------------------------------------- */
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
