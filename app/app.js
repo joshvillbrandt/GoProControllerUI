@@ -4,19 +4,23 @@
 
 // declare app level module
 var app = angular.module('app', [
-  // angular modules
+  // angular and third-party modules
   'ngRoute',
-  // third-party modules
+  'ngCookies',
   'ui.bootstrap',
   // components
   'appVersion',
   'panel',
-  // 'controllerApi',
-  // 'proxyStatus',
+  'goProController',
+  'proxyStatus',
+  'cameraStatus',
+  // pages
+  'pageCameras',
 ]);
 
 app.value('version', '0.1.0');
-app.value('api', 'http://localhost:8000');
+app.value('api_root', 'http://localhost:8000');
+app.value('poll_rate', 1000); // ms
 
 // app routing
 app.config(['$routeProvider', '$httpProvider', '$locationProvider',
@@ -27,7 +31,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
   // routes
   $routeProvider.when('/', {
     templateUrl: 'pages/cameras/cameras.html',
-    controller: 'StaticCtrl',
+    controller: 'CamerasCtrl',
     reloadOnSearch: false
   });
   $routeProvider.when('/debug', {
@@ -39,8 +43,8 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
 }]);
 
 // layout controller
-app.controller('LayoutCtrl', ['$scope', '$rootScope', '$location',
-  function ($scope, $rootScope, $location) {
+app.controller('LayoutCtrl', ['$scope', '$rootScope', '$location', 'SyncedCameras',
+  function ($scope, $rootScope, $location, SyncedCameras) {
     $scope.isActive = function (navBarPath) {
       return navBarPath === $location.path().split('/')[1];
     };
@@ -49,8 +53,7 @@ app.controller('LayoutCtrl', ['$scope', '$rootScope', '$location',
     });
 
     // init the LiveTelemetry process for the app
-    // LiveTelemetry.init();
-    // LiveCommand.init();
+    SyncedCameras.init();
   }]);
 
 // a generic static content controller
