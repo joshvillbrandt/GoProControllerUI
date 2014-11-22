@@ -4,36 +4,38 @@
 
 // declare app level module
 var app = angular.module('app', [
-    // angular modules
-    'ngRoute',
-    // third-party modules
-    'ui.bootstrap',
-    // components
-    'appVersion',
-    // 'controllerApi',
-    // 'proxyStatus',
+  // angular modules
+  'ngRoute',
+  // third-party modules
+  'ui.bootstrap',
+  // components
+  'appVersion',
+  'panel',
+  // 'controllerApi',
+  // 'proxyStatus',
 ]);
 
 app.value('version', '0.1.0');
+app.value('api', 'http://localhost:8000');
 
 // app routing
 app.config(['$routeProvider', '$httpProvider', '$locationProvider',
-        function($routeProvider, $httpProvider, $locationProvider) {
-    // html5mode
-    $locationProvider.html5Mode(true);
+    function($routeProvider, $httpProvider, $locationProvider) {
+  // html5mode
+  $locationProvider.html5Mode(true);
 
-    // routes
-    $routeProvider.when('/', {
-        templateUrl: 'pages/cameras/cameras.html',
-        controller: 'StaticCtrl',
-        reloadOnSearch: false
-    });
-    $routeProvider.when('/debug', {
-        templateUrl: 'pages/debug/debug.html',
-        controller: 'StaticCtrl',
-        reloadOnSearch: false
-    });
-    $routeProvider.otherwise({redirectTo: '/'});
+  // routes
+  $routeProvider.when('/', {
+    templateUrl: 'pages/cameras/cameras.html',
+    controller: 'StaticCtrl',
+    reloadOnSearch: false
+  });
+  $routeProvider.when('/debug', {
+    templateUrl: 'pages/debug/debug.html',
+    controller: 'StaticCtrl',
+    reloadOnSearch: false
+  });
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);
 
 // layout controller

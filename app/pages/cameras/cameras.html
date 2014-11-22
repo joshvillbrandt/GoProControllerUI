@@ -1,3 +1,77 @@
-<div>
-  hello
+<div class="page-cameras row">
+    <div class="col-md-3">
+
+      <panel>
+          <panel-heading>Control</panel-heading>
+          <panel-body class="camera-group-control">
+              <div class="btn-group">
+                  <button type="button" class="btn btn-default" disabled="disabled">Power: </button>
+                  <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="power_on">On</button>
+                  <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="power_off">Off</button>
+              </div>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-default" disabled="disabled">Record: </button>
+                  <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="record_on">On</button>
+                  <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="record_off">Off</button>
+              </div>
+              <div class="btn-group">
+                  <button type="button" class="btn btn-default" disabled="disabled">Mode: </button>
+                  <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="mode_video">Video</button>
+                  <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="mode_still">Still</button>
+              </div>
+          </panel-body>
+      </panel>
+
+      <panel>
+          <panel-heading>Queued Commands</panel-heading>
+          <panel-body>
+              <table class="table table-condensed table-striped">
+                  <tbody class="command-list">
+                  </tbody>
+              </table>
+          </panel-body>
+          <panel-footer>
+              avg cmd delay: <span class="cmd-time">?</span> seconds
+          </panel-footer>
+      </panel>
+
+    </div>
+    <div class="col-md-9">
+
+      <panel ng-init="view='list'">
+        <panel-heading>
+          Cameras
+          <div class="btn-group btn-group-xs pull-right" role="group">
+            <button type="button" class="btn btn-default" ng-class="{active: $parent.view=='list'}" ng-click="$parent.view='list'"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-default" ng-class="{active: $parent.view=='thumb'}" ng-click="$parent.view='thumb'"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></button>
+          </div>
+        </panel-heading>
+        <panel-body>
+
+          <div ng-if="$parent.view=='list'">
+            <div class="media">
+              <a class="media-left" href="#">
+                <img src="data:image/png;base64,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" style="width: 128px; height: 128px;" alt="preview">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                details go here
+              </div>
+            </div>
+          </div>
+
+          <div ng-if="$parent.view=='thumb'">
+            block
+          </div>
+
+        </panel-body>
+        <panel-footer>
+          <span class="status status-notfound"></span> not found,
+          <span class="status status-sleeping"></span> sleeping,
+          <span class="status status-on"></span> on,
+          <span class="status status-recording"></span> recording
+        </panel-footer>
+      </panel>
+
+    </div>
 </div>
