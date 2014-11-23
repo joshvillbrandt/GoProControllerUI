@@ -45,7 +45,8 @@ module.service('SyncedCameras', ['$rootScope', '$interval', 'poll_rate', 'Camera
         // items = data;
         for(var i = 0; i < data.length; i++) {
           // expand status field
-          data[i].status = JSON.parse(data[i].status);
+          if(data[i].status.length)
+            data[i].status = JSON.parse(data[i].status);
           // update existing item or add new item
           var item = _.find(items, { 'id': data[i].id });
           if(item === undefined) items.push(data[i]);

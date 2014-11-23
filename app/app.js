@@ -10,6 +10,7 @@ var app = angular.module('app', [
   'ui.bootstrap',
   // components
   'appVersion',
+  'holder',
   'panel',
   'goProController',
   'proxyStatus',
@@ -19,7 +20,7 @@ var app = angular.module('app', [
 ]);
 
 app.value('version', '0.1.0');
-app.value('api_root', 'http://localhost:8000');
+app.value('api_root', 'http://jvillbrandt-ubuntu:8000');
 app.value('poll_rate', 1000); // ms
 
 // app routing

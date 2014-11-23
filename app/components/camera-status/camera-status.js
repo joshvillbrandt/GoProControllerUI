@@ -8,17 +8,21 @@ module.directive('cameraStatus', [
     return {
       restrict: 'E',
       scope: {
-        'camera': '='
+        'status': '='
       },
-      transclude: false,
+      transclude: true,
       controller: function($scope, $element){
-        $scope.$watch('camera', function(camera){
-          $scope.status = 'notfound';
-          if(camera.status.record == 'on')
-            $scope.status = 'recording';
+        $scope.color = 'default';
+
+        // watch for updates
+        $scope.$watch('status', function(status){
+          if(status == 'sleeping') $scope.color = 'warning';
+          else if(status == 'on') $scope.color = 'success';
+          else if(status == 'recording') $scope.color = 'danger';
+          else $scope.color = 'default';
         });
       },
-      template: '<span class="camera-status" ng-class="{\'camera-status-notfound\': status==\'notfound\'}"></span>',
+      template: '<span class="label label-{{color}}" ng-transclude></span>',
       replace: true
     };
   }]);
