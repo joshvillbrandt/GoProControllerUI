@@ -2,9 +2,9 @@
     <div class="col-md-3">
 
       <panel>
-          <panel-heading>Control</panel-heading>
+          <panel-heading>Group Control</panel-heading>
           <panel-body class="camera-group-control">
-              <form role="form">
+              <!-- <form role="form">
                 <div class="form-group">
                   <label for="target">Target</label>
                   <input type="text" class="form-control" id="exampleInputEmail1">
@@ -18,7 +18,7 @@
                   <input type="text" class="form-control" id="exampleInputEmail1">
                 </div>
                 <button type="submit" class="btn btn-default">Send</button>
-              </form>
+              </form> -->
 
 
               <div class="btn-group">
@@ -84,9 +84,10 @@
                   <tbody>
                     <tr>
                       <td><span class="glyphicon glyphicon-time" aria-hidden="true"></span></td>
-                      <td>updated <span am-time-ago="camera.last_update"></span></td>
+                      <td ng-if="camera.last_update">updated <span am-time-ago="camera.last_update"></span></td>
+                      <td ng-if="!camera.last_update">never seen</td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!!camera.status.batt1">
                       <td><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></td>
                       <td>
                         batt1: {{camera.status.batt1}}%,
@@ -94,32 +95,34 @@
                         charging: {{camera.status.charging}}
                       </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!!camera.status.nvids">
                       <td><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></td>
                       <td>
+                        nvids: {{camera.status.nvids}},
+                        npics: {{camera.status.npics}},
                         mem: {{camera.status.mem}},
                         minsremaining: {{camera.status.minsremaining}}
                       </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!!camera.status.vidres">
                       <td><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></td>
                       <td>
-                        record: {{camera.status.record}},
                         vidres: {{camera.status.vidres}},
                         picres: {{camera.status.picres}},
                         fov: {{camera.status.fov}},
                         orientation: {{camera.status.orientation}}
                       </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!!camera.status.record">
                       <td><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></td>
                       <td>
+                        record: {{camera.status.record}},
                         mode: {{camera.status.mode}},
                         default mode: {{camera.status.defaultmode}},
                         auto off: {{camera.status.autooff}}
                       </td>
                     </tr>
-                    <tr>
+                    <tr ng-if="!!camera.status.model">
                       <td><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
                       <td>
                         name: {{camera.status.name}},

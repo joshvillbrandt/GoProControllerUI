@@ -27,9 +27,11 @@ The app is now available in `_public/`.
 
 This project uses [semantic versioning](http://semver.org/).
 
-### v0.1.0 - future
+### v0.1.0 - 2014/11/24
 
 * Initial release
+* Live camera status updates from GoProController
+* Add, edit, and remove cameras from GoProController
 
 ## Screenshot
 

@@ -4,6 +4,27 @@
 // define the module
 var module = angular.module('goProController', ['ngCookies', 'ngResource']);
 
+module.factory('Commands', ['$resource', 'api_root',
+  function($resource, api_root) {
+    return $resource(
+      api_root + '/commands/:id',
+      {id:'@id'},
+      {
+        'query': {
+          method: 'GET',
+          isArray: true
+        },
+        'create': {
+          method: 'POST'
+        },
+        // 'update': {
+        //   method: 'PUT'
+        // }
+      }
+    );
+  }
+]);
+
 module.factory('Cameras', ['$resource', 'api_root',
   function($resource, api_root) {
     return $resource(
@@ -47,7 +68,18 @@ module.service('SyncedCameras', ['$rootScope', '$interval', 'poll_rate', 'Camera
 
           // update existing item or add new item
           var item = _.find(items, { 'id': data[i].id });
-          if(item === undefined) items.push(data[i]);
+          if(item === undefined) {
+            items.push(data[i]);
+
+            // auto-edit for new cameras (this should match code in pages/cameras/cameras.js)
+            // EDIT: turning this off because it turns editing on for this camera in all open instances
+            // if(data[i].ssid == 'new camera') {
+            //   data[i].$edit = {
+            //     'ssid': data[i].ssid,
+            //     'password': data[i].password
+            //   };
+            // }
+          }
           else _.assign(item, data[i]);
 
           // remove item from known_items list
