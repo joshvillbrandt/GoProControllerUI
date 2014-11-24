@@ -16,6 +16,9 @@ module.factory('Cameras', ['$resource', 'api_root',
         },
         'create': {
           method: 'POST'
+        },
+        'update': {
+          method: 'PUT'
         }
       }
     );
@@ -29,41 +32,38 @@ module.service('SyncedCameras', ['$rootScope', '$interval', 'poll_rate', 'Camera
 
     // update function
     var update = function() {
-      var params = {
-        // sort: '-_date',
-        // limit: 1000,
-        // where: { mission: mission }
-      };
-      // if(items.length > 0)
-      //   params.where._date = { $gt: items[items.length - 1]._date };
+      Cameras.query({}, function(data){
+        // take record of known items
+        var known_items = [];
+        for(var j = 0; j < items.length; j++) {
+          known_items.push(items[j].id);
+        }
 
-      // stupid angular removes $gt, so stringify it ahead of time
-      // params.where = JSON.stringify(params.where);
-
-      Cameras.query(params, function(data){
         // update existing items list
-        // items = data;
         for(var i = 0; i < data.length; i++) {
           // expand status field
           if(data[i].status.length)
             data[i].status = JSON.parse(data[i].status);
+
           // update existing item or add new item
           var item = _.find(items, { 'id': data[i].id });
           if(item === undefined) items.push(data[i]);
           else _.assign(item, data[i]);
-        }
-        //
-        // console.log(data)
-        // if(data.items.length > 0) {
-        //   // reverse query sorting for calculating derived data
-        //   // newest to oldest from api, went oldest to newest here
-        //   data.items.reverse();
 
-        //   // add new items to the stack and notify listeners
-        //   items = items.concat(data.items);
-        //   console.log('Cameras update:', data.items.length, 'new items');
-        //   $rootScope.$broadcast('cameras-update', data.items);
-        // }
+          // remove item from known_items list
+          var index = known_items.indexOf(data[i].id);
+          if(index >= 0) known_items.splice(index, 1);
+        }
+
+        // remove cameras from our list that are no longer in the database
+        for(var k = 0; k < known_items.length; k++) {
+          for(var l = 0; l < items.length; l++) {
+            if(items[l].id == known_items[k]) {
+              items.splice(l, 1);
+              break;
+            }
+          }
+        }
       });
     };
 

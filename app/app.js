@@ -15,12 +15,13 @@ var app = angular.module('app', [
   'goProController',
   'proxyStatus',
   'cameraStatus',
+  'blurOnClick',
   // pages
   'pageCameras',
 ]);
 
 app.value('version', '0.1.0');
-app.value('api_root', 'http://jvillbrandt-ubuntu:8000');
+app.value('api_root', 'http://jvillbrandt-ubuntu');
 app.value('poll_rate', 1000); // ms
 
 // app routing

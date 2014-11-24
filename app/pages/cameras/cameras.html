@@ -66,20 +66,21 @@
         <panel-body>
 
           <div ng-if="view=='list'" class="camera-list">
-            <div class="media" ng-repeat="camera in cameras track by camera.id | orderBy:'ssid'">
+            <div class="media" ng-repeat="camera in cameras | orderBy:'ssid' track by camera.id">
               <div class="pull-left">
                 <img class="media-object" alt="preview" ng-src="{{camera.image}}" ng-if="camera.image">
                 <holder class="media-object" alt="preview" data-src="holder.js/128x96/text:?" ng-if="!camera.image.length">
               </div>
-              <div class="media-body">
+              <div class="media-body" ng-init="show_json=false">
                 <h4 class="media-heading">
                   <camera-status status="camera.summary">{{camera.ssid}}</camera-status>
                   <div class="pull-right">
-                    edit, json
+                    <button blur-on-click type="button" class="btn btn-xs btn-default" ng-class="{active: show_json}" ng-click="show_json=!show_json"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> json</button>
+                    <button blur-on-click type="button" class="btn btn-xs btn-default" ng-class="{active: camera.$edit}" ng-click="toggleEditMode(camera)"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> edit</button>
                   </div>
                 </h4>
 
-                <table class="table table-condensed">
+                <table class="table table-condensed" ng-if="!camera.$edit">
                   <tbody>
                     <tr>
                       <td><span class="glyphicon glyphicon-time" aria-hidden="true"></span></td>
@@ -103,7 +104,6 @@
                     <tr>
                       <td><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></td>
                       <td>
-                        mode: {{camera.status.mode}},
                         record: {{camera.status.record}},
                         vidres: {{camera.status.vidres}},
                         picres: {{camera.status.picres}},
@@ -111,9 +111,46 @@
                         orientation: {{camera.status.orientation}}
                       </td>
                     </tr>
-
+                    <tr>
+                      <td><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></td>
+                      <td>
+                        mode: {{camera.status.mode}},
+                        default mode: {{camera.status.defaultmode}},
+                        auto off: {{camera.status.autooff}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
+                      <td>
+                        name: {{camera.status.name}},
+                        model: {{camera.status.model}},
+                        firmware: {{camera.status.firmware}}
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
+
+                <form class="form-horizontal" role="form" ng-if="camera.$edit">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">SSID</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="ssid" ng-model="camera.$edit.ssid">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="password" ng-model="camera.$edit.password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-primary" ng-click="updateCamera(camera)">Save</button>
+                      <button type="button" class="btn btn-default" ng-click="toggleEditMode(camera)">Cancel</button>
+                      <button type="button" class="btn btn-danger pull-right" ng-click="deleteCamera(camera)">Delete</button>
+                    </div>
+                  </div>
+                </form>
 
                 <pre ng-if="show_json">{{camera.status | json}}</pre>
               </div>
@@ -121,7 +158,7 @@
           </div>
 
           <div ng-if="$parent.view=='thumb'" class="camera-thumb">
-            <div class="thumb" ng-repeat="camera in cameras track by camera.id | orderBy:'ssid'">
+            <div class="thumb" ng-repeat="camera in cameras | orderBy:'ssid' track by camera.id">
               <div>
                 <img class="media-object" alt="preview" ng-src="{{camera.image}}" ng-if="camera.image">
                 <holder class="media-object" alt="preview" data-src="holder.js/128x96/text:?" ng-if="!camera.image.length">
@@ -139,6 +176,10 @@
           <camera-status status="'sleeping'">sleeping</camera-status>,
           <camera-status status="'on'">on</camera-status>,
           <camera-status status="'recording'">recording</camera-status>
+
+          <div class="pull-right">
+            <button blur-on-click type="button" class="btn btn-xs btn-default" ng-click="createCamera()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> add camera</button>
+          </div>
         </panel-footer>
       </panel>
 
