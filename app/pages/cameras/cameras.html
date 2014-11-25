@@ -87,7 +87,7 @@
                       <td ng-if="camera.last_update">updated <span am-time-ago="camera.last_update"></span></td>
                       <td ng-if="!camera.last_update">never seen</td>
                     </tr>
-                    <tr ng-if="!!camera.status.batt1">
+                    <tr ng-if="camera.status.batt1!=undefined">
                       <td><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></td>
                       <td>
                         batt1: {{camera.status.batt1}}%,
@@ -95,7 +95,7 @@
                         charging: {{camera.status.charging}}
                       </td>
                     </tr>
-                    <tr ng-if="!!camera.status.nvids">
+                    <tr ng-if="camera.status.nvids!=undefined">
                       <td><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></td>
                       <td>
                         nvids: {{camera.status.nvids}},
@@ -104,7 +104,7 @@
                         minsremaining: {{camera.status.minsremaining}}
                       </td>
                     </tr>
-                    <tr ng-if="!!camera.status.vidres">
+                    <tr ng-if="camera.status.vidres!=undefined">
                       <td><span class="glyphicon glyphicon-camera" aria-hidden="true"></span></td>
                       <td>
                         vidres: {{camera.status.vidres}},
@@ -113,7 +113,7 @@
                         orientation: {{camera.status.orientation}}
                       </td>
                     </tr>
-                    <tr ng-if="!!camera.status.record">
+                    <tr ng-if="camera.status.record!=undefined">
                       <td><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></td>
                       <td>
                         record: {{camera.status.record}},
@@ -122,7 +122,7 @@
                         auto off: {{camera.status.autooff}}
                       </td>
                     </tr>
-                    <tr ng-if="!!camera.status.model">
+                    <tr ng-if="camera.status.model!=undefined">
                       <td><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
                       <td>
                         name: {{camera.status.name}},
