@@ -20,7 +20,7 @@ var app = angular.module('app', [
   'pageCameras',
 ]);
 
-app.value('version', '0.1.0');
+app.value('version', '0.2.0');
 app.value('api_root', 'http://jvillbrandt-ubuntu');
 app.value('poll_rate', 1000); // ms
 
