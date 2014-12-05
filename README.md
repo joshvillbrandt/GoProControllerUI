@@ -45,4 +45,4 @@ This project uses [semantic versioning](http://semver.org/).
 
 ## Screenshot
 
-![Screenshot](screenshots/screenshot-v0.1.0.png)
+![Screenshot](screenshots/screenshot-v0.2.0.png)
