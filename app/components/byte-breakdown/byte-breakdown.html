@@ -1,4 +1,22 @@
 <div class="byte-breakdown">
-  <div>{{name}}: {{bytes}}</div>
-  <pre>{{config.status[name] | json}}</pre>
+
+  <div>{{endpoint}}: {{bytes}}</div>
+
+  <div class="well">
+    <table class="table table-condensed">
+      <tr>
+        <th>Bytes</th>
+        <th>Name</th>
+        <th>Current Value</th>
+        <th>Translation</th>
+      </tr>
+      <tr ng-repeat="group in groups">
+        <td>{{group.bytes}}</td>
+        <td>{{group.name}}</td>
+        <td>{{status[group.name]}}</td>
+        <td>{{config.status[endpoint][group.name].translate}}</td>
+      </tr>
+    </table>
+  </div>
+
 </div>

@@ -14,7 +14,7 @@
           <label class="btn btn-primary" ng-model="$parent.$parent.$parent.selected" btn-radio="camera.id" ng-repeat="camera in cameras | orderBy:'ssid' track by camera.id" uncheckable>{{camera.ssid}}</label>
         </div>
 
-        <byte-breakdown ng-repeat="(name, bytes) in camera.status.raw" name="name" bytes="bytes"></byte-breakdown>
+        <byte-breakdown ng-repeat="(endpoint, bytes) in camera.status.raw" endpoint="endpoint" bytes="bytes" status="camera.status"></byte-breakdown>
 
       </panel-body>
       <panel-footer>
