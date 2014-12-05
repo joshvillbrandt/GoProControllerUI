@@ -4,6 +4,30 @@
 // define the module
 var module = angular.module('goProController', ['ngCookies', 'ngResource']);
 
+module.service('CameraConfig', ['$http', 'api_root',
+  function($http, api_root) {
+    // state vars
+    var promise;
+    var config = {};
+
+    // public functions
+    return {
+      get: function(){
+        if(promise === undefined) {
+          promise = $http.get(api_root + '/config');
+
+          // extend config object on success
+          promise.success(function(data){
+            angular.extend(config, data);
+          });
+        }
+
+        return config;
+      }
+    };
+  }
+]);
+
 module.factory('Commands', ['$resource', 'api_root',
   function($resource, api_root) {
     return $resource(

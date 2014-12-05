@@ -16,8 +16,12 @@ var app = angular.module('app', [
   'proxyStatus',
   'cameraStatus',
   'blurOnClick',
+  'groupControl',
+  'queuedCommands',
+  'byteBreakdown',
   // pages
-  'pageCameras',
+  'page.cameras',
+  'page.debug',
 ]);
 
 app.value('version', '0.2.0');
@@ -38,7 +42,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
   });
   $routeProvider.when('/debug', {
     templateUrl: 'pages/debug/debug.html',
-    controller: 'StaticCtrl',
+    controller: 'DebugCtrl',
     reloadOnSearch: false
   });
   $routeProvider.otherwise({redirectTo: '/'});

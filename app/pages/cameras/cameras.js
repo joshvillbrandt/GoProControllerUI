@@ -1,7 +1,7 @@
 (function(window, angular, undefined) {
 'use strict';
 
-var module = angular.module('pageCameras', ['ngCookies', 'goProController']);
+var module = angular.module('page.cameras', ['ngCookies', 'goProController']);
 
 module.controller('CamerasCtrl', [
   '$scope', '$cookies', 'SyncedCameras', 'Cameras',

@@ -1,1 +1,25 @@
-<div></div>
+<div class="page-debug row">
+  <div class="col-md-3">
+    <group-control></group-control>
+    <queued-commands></queued-commands>
+  </div>
+  <div class="col-md-9">
+
+    <panel>
+      <panel-heading>
+        Debug
+      </panel-heading>
+      <panel-body>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="$parent.$parent.$parent.selected" btn-radio="camera.id" ng-repeat="camera in cameras | orderBy:'ssid' track by camera.id" uncheckable>{{camera.ssid}}</label>
+        </div>
+
+        <byte-breakdown ng-repeat="(name, bytes) in camera.status.raw" name="name" bytes="bytes"></byte-breakdown>
+
+      </panel-body>
+      <panel-footer>
+      </panel-footer>
+    </panel>
+
+  </div>
+</div>

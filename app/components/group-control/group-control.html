@@ -1,0 +1,36 @@
+<panel>
+  <panel-heading>Group Control</panel-heading>
+  <panel-body class="camera-group-control">
+    <!-- <form role="form">
+      <div class="form-group">
+      <label for="target">Target</label>
+      <input type="text" class="form-control" id="exampleInputEmail1">
+      </div>
+      <div class="form-group">
+      <label for="target">Parameter</label>
+      <input type="text" class="form-control" id="exampleInputEmail1">
+      </div>
+      <div class="form-group">
+      <label for="target">Value</label>
+      <input type="text" class="form-control" id="exampleInputEmail1">
+      </div>
+      <button type="submit" class="btn btn-default">Send</button>
+    </form> -->
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" disabled="disabled">Power: </button>
+      <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="power_on">On</button>
+      <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="power_off">Off</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" disabled="disabled">Record: </button>
+      <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="record_on">On</button>
+      <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="record_off">Off</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" disabled="disabled">Mode: </button>
+      <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="mode_video">Video</button>
+      <button type="button" class="btn btn-primary gopro-sendcommand" gopro-camera="all" gopro-command="mode_still">Still</button>
+    </div>
+  </panel-body>
+</panel>
