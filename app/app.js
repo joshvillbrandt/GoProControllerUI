@@ -25,7 +25,7 @@ var app = angular.module('app', [
 ]);
 
 app.value('version', '0.2.0');
-app.value('api_root', 'http://jvillbrandt-ubuntu/api');
+app.value('api_root', 'http://localhost:8000');
 app.value('poll_rate', 1000); // ms
 
 // app routing

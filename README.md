@@ -15,6 +15,8 @@ npm run-script build
 sudo service apache2 restart
 ```
 
+Note, you'll have to change the `api_root` in [app/app.js](app/app.js) if you are hosting through Apache. If you are on the same machine as the server, a value like `http://localhost/api` could work. However, you should probably make `api_root` include your actual hostname instead of `localhost`.
+
 ## Development Setup
 
 Clone the repo and install the code:
@@ -27,6 +29,8 @@ npm start
 ```
 
 The UI should now be available at [http://localhost:9000/](http://localhost:9000/).
+
+If you are hosting the GoProController on the same machine at the development, you should be able to immediately add cameras in the UI. If that doesn't seem to be working, follow the steps in the Production Setup to set the correct `api_root` URL. (The default `api_root` is `http://localhost:8000`.)
 
 ## Change History
 
