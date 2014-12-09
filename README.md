@@ -47,6 +47,10 @@ This project uses [semantic versioning](http://semver.org/).
 * Live camera status updates from GoProController
 * Add, edit, and remove cameras from GoProController
 
+### Previous versions
+
+* This app was originally integrated with [GoProController](https://github.com/joshvillbrandt/GoProController)
+
 ## Screenshot
 
 ![Screenshot](screenshots/screenshot-v0.2.0.png)
