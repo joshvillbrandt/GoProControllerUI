@@ -1,0 +1,27 @@
+<div dropdown class="btn-group group-control-dropdown">
+  <button class="btn btn-default dropdown-toggle" dropdown-toggle>
+    <span ng-if="model.length == 0">Select a camera...</span>
+    <span ng-if="model.length == options.length && model.length != 0">All cameras</span>
+    <span ng-if="model.length > 0 && model.length < options.length">
+      {{ modelNames().join(', ') }}
+    </span>
+    <span class="caret pull-right"></span>
+  </button>
+
+  <ul class="dropdown-menu" role="menu">
+
+    <li><a ng-click="selectAll()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Check All</a></li>
+
+    <li><a ng-click="deselectAll($event);"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Uncheck All</a></li>
+
+    <li class="divider"></li>
+
+    <li ng-repeat="option in options">
+      <a ng-click="setSelectedItem($event)" ng-class="isChecked(option.id)">
+        {{option.ssid}}
+        <span class="glyphicon glyphicon-ok pull-right" aria-hidden="true" ng-if="isChecked(option.id) !== false"></span>
+      </a>
+    </li>
+
+  </ul>
+</div>
