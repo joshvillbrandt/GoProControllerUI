@@ -23,7 +23,7 @@
             </div>
             <div class="media-body" ng-init="show_json=false">
               <h4 class="media-heading">
-                <camera-status status="camera.summary">{{camera.ssid}}</camera-status>
+                <camera-status status="camera.summary" ng-click="groupControlTarget(camera.id)">{{camera.ssid}}</camera-status>
                 <div class="pull-right">
                   <button blur-on-click type="button" class="btn btn-xs btn-default" ng-class="{active: show_json}" ng-click="show_json=!show_json"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> json</button>
                   <button blur-on-click type="button" class="btn btn-xs btn-default" ng-class="{active: camera.$edit}" ng-click="toggleEditMode(camera)"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> edit</button>
@@ -117,7 +117,7 @@
               <holder class="media-object" alt="preview" data-src="holder.js/128x96/text:?" ng-if="!camera.image.length">
             </div>
             <div>
-              <camera-status status="camera.summary">{{camera.ssid}}</camera-status>
+              <camera-status status="camera.summary" ng-click="groupControlTarget(camera.id)">{{camera.ssid}}</camera-status>
               updated <span am-time-ago="camera.last_update"></span>
             </div>
           </div>

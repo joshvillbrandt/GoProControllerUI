@@ -22,7 +22,7 @@ module.directive('cameraStatus', [
           else $scope.color = 'default';
         });
       },
-      template: '<span class="label label-{{color}}" ng-transclude></span>',
+      template: '<span class="label label-{{color}} camera-status" ng-transclude></span>',
       replace: true
     };
   }]);

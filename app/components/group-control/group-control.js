@@ -14,7 +14,7 @@ module.directive('groupControl', ['CameraConfig', 'SyncedCameras', 'Commands',
 
         // load cameras
         $scope.cameras = SyncedCameras.items();
-        window.cameras = $scope.cameras;
+        $scope.targets = [];
 
         // submit camera commands
         $scope.submit = function() {
@@ -23,6 +23,9 @@ module.directive('groupControl', ['CameraConfig', 'SyncedCameras', 'Commands',
         };
 
         // listen for camera select events from the camera list
+        $scope.$on('group-control-target', function(event, data){
+          $scope.targets = [data];
+        });
       },
       templateUrl: 'components/group-control/group-control.html',
       replace: false
@@ -43,16 +46,15 @@ module.directive('groupControlDropdown', [
       controller: function($scope){
         if($scope.model === undefined) $scope.model = [];
 
+        // select dropdown helpers
         $scope.selectAll = function() {
           $scope.model = _.pluck($scope.options, 'id');
         };
-
         $scope.deselectAll = function($event) {
           $scope.model = [];
 
           $event.stopPropagation();
         };
-
         $scope.setSelectedItem = function($event){
           var id = this.option.id;
 
@@ -65,7 +67,6 @@ module.directive('groupControlDropdown', [
 
           $event.stopPropagation();
         };
-
         $scope.isChecked = function(id) {
           if(_.contains($scope.model, id)) {
             return 'selected';
@@ -73,6 +74,7 @@ module.directive('groupControlDropdown', [
           return false;
         };
 
+        // select display helper
         $scope.modelNames = function() {
           var names = [];
           for(var i = 0; i < $scope.model.length; i++) {

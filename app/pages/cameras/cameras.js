@@ -4,8 +4,8 @@
 var module = angular.module('page.cameras', ['ngCookies', 'goProController']);
 
 module.controller('CamerasCtrl', [
-  '$scope', '$cookies', 'SyncedCameras', 'Cameras',
-  function ($scope, $cookies, SyncedCameras, Cameras) {
+  '$rootScope', '$scope', '$cookies', 'SyncedCameras', 'Cameras',
+  function ($rootScope, $scope, $cookies, SyncedCameras, Cameras) {
     // view mode
     $scope.view = $cookies.view || 'list';
     $scope.setView = function(view){
@@ -48,6 +48,11 @@ module.controller('CamerasCtrl', [
 
     // pull cameras from service
     $scope.cameras = SyncedCameras.items();
+
+    // inform group control to target a particular camera
+    $scope.groupControlTarget = function(id){
+      $rootScope.$broadcast('group-control-target', id);
+    };
   }]);
 
 })(window, window.angular);
