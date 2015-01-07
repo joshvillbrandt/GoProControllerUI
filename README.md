@@ -36,10 +36,14 @@ If you are hosting the GoProController on the same machine at the development, y
 
 This project uses [semantic versioning](http://semver.org/).
 
-### v0.2.1 - future
+### v0.2.2 - future
 
-* TODO: commanding
-* TODO: debug interface
+* TODO: restore debug interface from v0.1.0
+
+### v0.2.1 - 2015/01/06
+
+* Live command queue updates from GoProController
+* Add and remove commands from GoProController
 
 ### v0.2.0 - 2014/11/24
 
