@@ -1,12 +1,18 @@
-<panel>
+<panel class="queued-commands">
   <panel-heading>Queued Commands</panel-heading>
   <panel-body>
     <table class="table table-condensed table-striped">
       <tbody class="command-list">
+        <tr ng-repeat="command in commands | filter:unresolvedCommands | orderBy:'date_added' track by command.id">
+          <td>{{cameraName(command.camera)}}</td>
+          <td>{{command.command}}<span ng-if="command.value">:</span> {{command.value}}</td>
+          <td><a href="#" class="btn btn-default btn-xs" role="button" ng-click="deleteCommand(command.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+        </tr>
       </tbody>
     </table>
+    <p ng-if="commands.length <= 0">No queued commands...</p>
   </panel-body>
   <panel-footer>
-    avg cmd delay: <span class="cmd-time">?</span> seconds
+    avg cmd delay: <span class="cmd-time">{{cmd_delay}}</span> seconds
   </panel-footer>
 </panel>

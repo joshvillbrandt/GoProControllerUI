@@ -18,7 +18,7 @@
         <select class="form-control" ng-model="value" ng-options="key as key for (key, value) in config.command[command].translate"></select>
       </div>
 
-      <button type="submit" class="btn btn-default">Send</button>
+      <button type="submit" class="btn btn-primary" ng-click="submit(targets, command, value)" ng-class="{disabled: targets.length == 0 || command === undefined}">Send</button>
     </form>
 
   </panel-body>

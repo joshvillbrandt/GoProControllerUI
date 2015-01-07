@@ -49,8 +49,8 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider',
 }]);
 
 // layout controller
-app.controller('LayoutCtrl', ['$scope', '$rootScope', '$location', 'SyncedCameras',
-  function ($scope, $rootScope, $location, SyncedCameras) {
+app.controller('LayoutCtrl', ['$scope', '$rootScope', '$location', 'SyncedCameras', 'SyncedCommands',
+  function ($scope, $rootScope, $location, SyncedCameras, SyncedCommands) {
     $scope.isActive = function (navBarPath) {
       return navBarPath === $location.path().split('/')[1];
     };
@@ -58,8 +58,9 @@ app.controller('LayoutCtrl', ['$scope', '$rootScope', '$location', 'SyncedCamera
       $scope.navCollapsed = true;
     });
 
-    // init the LiveTelemetry process for the app
+    // init the model syncing
     SyncedCameras.init();
+    SyncedCommands.init();
   }]);
 
 // a generic static content controller

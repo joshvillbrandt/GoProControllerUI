@@ -17,9 +17,15 @@ module.directive('groupControl', ['CameraConfig', 'SyncedCameras', 'Commands',
         $scope.targets = [];
 
         // submit camera commands
-        $scope.submit = function() {
-          // create new cmd
-          console.log($scope.targets, $scope.command, $scope.value)
+        $scope.submit = function(targets, command, value) {
+          // create new command request
+          for(var i = 0; i < targets.length; i++) {
+            var request = new Commands();
+            request.camera = targets[i];
+            request.command = command;
+            request.value = (value !== undefined) ? value : '';
+            request.$create();
+          }
         };
 
         // listen for camera select events from the camera list
