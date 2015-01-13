@@ -1,6 +1,6 @@
 {
   "name": "GoProControllerUI",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "A responsive web interface for the GoProController API.",
   "scripts": {
     "preinstall": "rm -rf node_modules bower_components",
