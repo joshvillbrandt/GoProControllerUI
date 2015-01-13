@@ -36,9 +36,9 @@ If you are hosting the GoProController on the same machine at the development, y
 
 This project uses [semantic versioning](http://semver.org/).
 
-### v0.2.2 - future
+### v0.2.2 - 2015/01/13
 
-* TODO: restore debug interface from v0.1.0
+* Restored debug interface from v0.1.0
 
 ### v0.2.1 - 2015/01/06
 
@@ -57,4 +57,6 @@ This project uses [semantic versioning](http://semver.org/).
 
 ## Screenshot
 
-![Screenshot](screenshots/screenshot-v0.2.0.png)
+![Screenshot](screenshots/screenshot-v0.2.2.png)
+
+![Screenshot](screenshots/screenshot-v0.2.2-debug.png)

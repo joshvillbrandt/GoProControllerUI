@@ -19,7 +19,13 @@ module.controller('DebugCtrl', [
     // auto-populate the camera scope variable
     $scope.$watch('selected', function(selected){
       $scope.camera = _.find($scope.cameras, { 'id': selected });
+      $scope.$broadcast('hold-bytes-reset');
     }, true);
+
+    // send hold event
+    $scope.hold = function(){
+      $scope.$broadcast('hold-bytes');
+    };
   }]);
 
 })(window, window._, window.angular);

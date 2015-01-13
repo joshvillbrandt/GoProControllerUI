@@ -1,6 +1,10 @@
 <div class="byte-breakdown">
 
-  <div>{{endpoint}}: {{bytes}}</div>
+  <h3>{{endpoint}}</h3>
+  <p class="held-bytes">{{heldBytes}}</p>
+  <p class="byte-diff-hover">
+    <span ng-repeat="group in groups | filter:{extra: '!true'}" tooltip="{{group.name}}"><byte-diff group="group"></byte-diff></span>
+  </p>
 
   <div class="well">
     <table class="table table-condensed">
@@ -11,7 +15,7 @@
         <th>Translation</th>
       </tr>
       <tr ng-repeat="group in groups">
-        <td>{{group.bytes}}</td>
+        <td><byte-diff group="group"></byte-diff></td>
         <td>{{group.name}}</td>
         <td>{{status[group.name]}}</td>
         <td>{{config.status[endpoint][group.name].translate}}</td>

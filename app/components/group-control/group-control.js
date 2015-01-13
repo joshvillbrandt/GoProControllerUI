@@ -53,8 +53,10 @@ module.directive('groupControlDropdown', [
         if($scope.model === undefined) $scope.model = [];
 
         // select dropdown helpers
-        $scope.selectAll = function() {
+        $scope.selectAll = function($event) {
           $scope.model = _.pluck($scope.options, 'id');
+
+          $event.stopPropagation();
         };
         $scope.deselectAll = function($event) {
           $scope.model = [];

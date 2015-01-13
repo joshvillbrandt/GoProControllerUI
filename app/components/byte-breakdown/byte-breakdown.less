@@ -2,16 +2,38 @@
 
 .byte-breakdown {
   margin-top: @panel-body-padding;
-
-  div:first-child {
-    margin-bottom: 10px;
-  }
+  word-wrap: break-word;
 
   div.well {
     padding: 5px;
   }
 
+  .table > tbody > tr > th {
+    border-top-width: 0;
+  }
+
   table {
     margin-bottom: 0;
+
+    td {
+      max-width: 400px;
+      word-wrap: break-word;
+    }
+  }
+
+  .byte-diff {
+    background-color: lighten(@brand-danger, 30%);
+
+    span {
+      background-color: lighten(@brand-danger, 10%);
+    }
+  }
+
+  .byte-diff-hover > span:hover {
+    border: dotted 1px #000000;
+  }
+
+  .held-bytes {
+    color: @gray-light;
   }
 }
