@@ -37,6 +37,15 @@
                     <td ng-if="camera.last_update">updated <span am-time-ago="camera.last_update"></span></td>
                     <td ng-if="!camera.last_update">never seen</td>
                   </tr>
+                  <tr ng-if="camera.status.model!=undefined">
+                    <td><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
+                    <td>
+                      name: {{camera.status.name}},
+                      model: {{camera.status.model}},
+                      firmware: {{camera.status.firmware}},
+                      attachment: {{camera.status.attachment}}
+                    </td>
+                  </tr>
                   <tr ng-if="camera.status.batt1!=undefined">
                     <td><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></td>
                     <td>
@@ -79,15 +88,6 @@
                       lowlight: {{camera.status.lowlight}},
                       looping: {{camera.status.looping}},
                       autooff: {{camera.status.autooff}}
-                    </td>
-                  </tr>
-                  <tr ng-if="camera.status.model!=undefined">
-                    <td><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></td>
-                    <td>
-                      name: {{camera.status.name}},
-                      model: {{camera.status.model}},
-                      firmware: {{camera.status.firmware}},
-                      attachment: {{camera.status.attachment}}
                     </td>
                   </tr>
                 </tbody>

@@ -36,6 +36,10 @@ If you are hosting the GoProController on the same machine at the development, y
 
 This project uses [semantic versioning](http://semver.org/).
 
+### v0.2.3 - 2015/01/13
+
+* Updates for the latest `goprohero` library
+
 ### v0.2.2 - 2015/01/13
 
 * Restored debug interface from v0.1.0
