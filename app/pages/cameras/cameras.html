@@ -58,8 +58,9 @@
                     <td><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></td>
                     <td>
                       record: {{camera.status.record}},
+                      mode: {{camera.status.mode}},
                       elapsed: {{("00" + camera.status.minselapsed).substr(-2,2);}}:{{("00" + camera.status.secselapsed).substr(-2,2);}},
-                      mode: {{camera.status.mode}}
+                      overheated: {{camera.status.overheated}}
                     </td>
                   </tr>
                   <tr ng-if="camera.status.nvids!=undefined">
@@ -77,6 +78,7 @@
                       vidres: {{camera.status.vidres}},
                       picres: {{camera.status.picres}},
                       fov: {{camera.status.fov}},
+                      fps: {{camera.status.fps}},
                       orientation: {{camera.status.orientation}}
                     </td>
                   </tr>
@@ -86,6 +88,7 @@
                       default mode: {{camera.status.defaultmode}},
                       spotmeter: {{camera.status.spotmeter}},
                       lowlight: {{camera.status.lowlight}},
+                      protune: {{camera.status.protune}},
                       looping: {{camera.status.looping}},
                       autooff: {{camera.status.autooff}}
                     </td>
