@@ -45,13 +45,21 @@
                       charging: {{camera.status.charging}}
                     </td>
                   </tr>
+                  <tr ng-if="camera.status.record!=undefined">
+                    <td><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span></td>
+                    <td>
+                      record: {{camera.status.record}},
+                      elapsed: {{("00" + camera.status.minselapsed).substr(-2,2);}}:{{("00" + camera.status.secselapsed).substr(-2,2);}},
+                      mode: {{camera.status.mode}}
+                    </td>
+                  </tr>
                   <tr ng-if="camera.status.nvids!=undefined">
                     <td><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></td>
                     <td>
                       nvids: {{camera.status.nvids}},
                       npics: {{camera.status.npics}},
-                      mem: {{camera.status.mem}},
-                      minsremaining: {{camera.status.minsremaining}}
+                      minsremaining: {{camera.status.minsremaining}},
+                      picsremaining: {{camera.status.picsremaining}}
                     </td>
                   </tr>
                   <tr ng-if="camera.status.vidres!=undefined">
@@ -63,13 +71,14 @@
                       orientation: {{camera.status.orientation}}
                     </td>
                   </tr>
-                  <tr ng-if="camera.status.record!=undefined">
+                  <tr ng-if="camera.status.defaultmode!=undefined">
                     <td><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></td>
                     <td>
-                      record: {{camera.status.record}},
-                      mode: {{camera.status.mode}},
                       default mode: {{camera.status.defaultmode}},
-                      auto off: {{camera.status.autooff}}
+                      spotmeter: {{camera.status.spotmeter}},
+                      lowlight: {{camera.status.lowlight}},
+                      looping: {{camera.status.looping}},
+                      autooff: {{camera.status.autooff}}
                     </td>
                   </tr>
                   <tr ng-if="camera.status.model!=undefined">
@@ -77,7 +86,8 @@
                     <td>
                       name: {{camera.status.name}},
                       model: {{camera.status.model}},
-                      firmware: {{camera.status.firmware}}
+                      firmware: {{camera.status.firmware}},
+                      attachment: {{camera.status.attachment}}
                     </td>
                   </tr>
                 </tbody>
