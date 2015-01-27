@@ -59,10 +59,16 @@
         <!-- End content -->
 
         <div id="footer">
-            <div class="container text-muted">
-                <span class="pull-right">© 2014 <a href="http://javconcepts.com/" target="_blank" class="text-muted">Josh Villbrandt</a></span>
-                <span class="hidden-xs" ng-cloak>
+            <div class="container text-muted" ng-cloak>
+                <span class="pull-right">
                     <a href="https://github.com/joshvillbrandt/GoProControllerUI" target="_blank" class="text-muted">v<span app-version></span></a>
+                    |
+                    © 2014 <a href="http://javconcepts.com/" target="_blank" class="text-muted">Josh Villbrandt</a>
+                </span>
+                <span class="hidden-xs">
+                    <span app-api-root></span>
+                    @
+                    <span app-poll-rate></span>s
                 </span>
                 <proxy-status class="visible-xs-inline"></proxy-status>
         </div>

@@ -9,7 +9,7 @@ var app = angular.module('app', [
   'ngCookies',
   'ui.bootstrap',
   // components
-  'appVersion',
+  'valueDirectives',
   'holder',
   'panel',
   'goProController',
