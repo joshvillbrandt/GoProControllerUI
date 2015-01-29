@@ -14,7 +14,7 @@ module.directive('proxyStatus', ['SyncedCameras', '$interval',
         $scope.cameras = SyncedCameras.items();
         $scope.status = 'proxy dead';
         var last_attempt;
-        var ok_threshold = 20000; // ms
+        var ok_threshold = 90000; // ms
 
         // evaluate status
         var promise = $interval(function(){
