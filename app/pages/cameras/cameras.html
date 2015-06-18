@@ -16,7 +16,7 @@
       <panel-body>
 
         <div ng-if="view=='list'" class="camera-list">
-          <div class="media" ng-repeat="camera in cameras | orderBy:'ssid' track by camera.id">
+          <div class="media" ng-repeat="camera in cameras | orderBy:$index track by camera.id">
             <div class="pull-left">
               <img class="media-object" alt="preview" ng-src="{{camera.image}}" ng-if="camera.image">
               <holder class="media-object" alt="preview" data-src="holder.js/128x96/text:?" ng-if="!camera.image.length">
