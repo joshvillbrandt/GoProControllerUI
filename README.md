@@ -36,6 +36,11 @@ If you are hosting the GoProController on the same machine at the development, y
 
 This project uses [semantic versioning](http://semver.org/).
 
+### v0.2.4 - 2015/06/18
+
+* Fix editing race condition and re-enable auto edit for new cameras
+* Add natural sorting in camera list
+
 ### v0.2.3 - 2015/01/13
 
 * Updates for the latest `goprohero` library

@@ -24,7 +24,7 @@ var app = angular.module('app', [
   'page.debug',
 ]);
 
-app.value('version', '0.2.3');
+app.value('version', '0.2.4');
 app.value('api_root', 'http://localhost:8000');
 app.value('poll_rate', 1000); // ms
 
