@@ -167,18 +167,22 @@ module.service('SyncedCameras', ['$rootScope', '$interval', 'poll_rate', 'Camera
           // update existing item or add new item
           var item = _.find(items, { 'id': data[i].id });
           if(item === undefined) {
-            items.push(data[i]);
-
-            // auto-edit for new cameras (this should match code in pages/cameras/cameras.js)
-            // EDIT: turning this off because it turns editing on for this camera in all open instances
-            // if(data[i].ssid == 'new camera') {
-            //   data[i].$edit = {
-            //     'ssid': data[i].ssid,
-            //     'password': data[i].password
-            //   };
-            // }
+            item = data[i];
+            items.push(item);
           }
           else _.assign(item, data[i]);
+
+          // auto-edit for new cameras (this should match code in pages/cameras/cameras.js)
+          if(!item.$edit && item.ssid == 'new camera') {
+            item.$edit = {
+              'ssid': item.ssid,
+              'password': item.password
+            };
+          }
+          // auto-unedit if this has been modified elsewhere
+          else if(item.$edit && item.ssid != 'new camera' && item.$edit.ssid == 'new camera') {
+            delete item.$edit;
+          }
 
           // remove item from known_items list
           var index = known_items.indexOf(data[i].id);
@@ -194,6 +198,13 @@ module.service('SyncedCameras', ['$rootScope', '$interval', 'poll_rate', 'Camera
             }
           }
         }
+
+        // natural-sort cameras
+        // items.sortNat();
+        // extra shenanigans let us sort in place because sortNat() is acting weird
+        var sorted = _.sortByNat(items, 'ssid');
+        _.remove(items, function(){ return true; }); // removes all elements
+        items.push.apply(items, sorted);
       });
     };
 
